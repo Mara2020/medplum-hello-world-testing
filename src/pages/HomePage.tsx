@@ -3,6 +3,7 @@ import { getReferenceString } from '@medplum/core';
 import { Practitioner } from '@medplum/fhirtypes';
 import { Document, ResourceName, SearchControl, useMedplumNavigate, useMedplumProfile } from '@medplum/react';
 import { Outlet } from 'react-router-dom';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 /**
  * Home page that greets the user and displays a list of patients.
@@ -21,6 +22,7 @@ export function HomePage(): JSX.Element {
     <Document>
       <Title>
         Welcome <ResourceName value={profile} link />
+        <ThemeToggle />
       </Title>
       <SearchControl
         search={{ resourceType: 'Patient', fields: ['name', 'birthdate', 'gender'] }}
