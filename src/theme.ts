@@ -44,4 +44,4 @@ export const orangeTheme = createTheme({
   },
 });
 
-export const theme = orangeTheme; // merge not working?
+export const theme = mergeMantineTheme(DEFAULT_THEME, orangeTheme);
