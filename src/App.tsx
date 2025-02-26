@@ -1,10 +1,11 @@
 import { AppShell, ErrorBoundary, Loading, Logo, useMedplum, useMedplumProfile } from '@medplum/react';
-import { IconUser } from '@tabler/icons-react';
+import { IconCalendarEvent, IconUser } from '@tabler/icons-react';
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PatientHistory } from './components/PatientHistory';
 import { PatientOverview } from './components/PatientOverview';
 import { Timeline } from './components/Timeline';
+import { AppointmentsPage } from './pages/AppointmentsPage';
 import { HomePage } from './pages/HomePage';
 import { LandingPage } from './pages/LandingPage';
 import { PatientPage } from './pages/PatientPage';
@@ -25,7 +26,10 @@ export function App(): JSX.Element | null {
       menus={[
         {
           title: 'My Links',
-          links: [{ icon: <IconUser />, label: 'Patients', href: '/' }],
+          links: [
+            { icon: <IconUser />, label: 'Patients', href: '/' },
+            { icon: <IconCalendarEvent />, label: 'Appointments', href: '/appointments' },
+          ],
         },
       ]}
     >
@@ -34,6 +38,7 @@ export function App(): JSX.Element | null {
           <Routes>
             <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
             <Route path="/signin" element={<SignInPage />} />
+            <Route path="/appointments" element={<AppointmentsPage />} />
             <Route path="/Patient/:id" element={<PatientPage />}>
               <Route index element={<PatientOverview />} />
               <Route path="overview" element={<PatientOverview />} />
