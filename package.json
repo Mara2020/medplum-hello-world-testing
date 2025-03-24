@@ -24,7 +24,7 @@
     "@mantine/hooks": "7.16.3",
     "@mantine/notifications": "7.16.3",
     "@medplum/core": "3.2.32",
-    "@medplum/eslint-config": "3.2.32",
+    "@medplum/eslint-config": "4.0.4",
     "@medplum/fhirtypes": "3.2.32",
     "@medplum/react": "3.2.32",
     "@tabler/icons-react": "3.17.0",
