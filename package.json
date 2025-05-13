@@ -49,7 +49,7 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "@mantine/dates": "^8.0.0",
+    "@mantine/dates": "7.17.4",
     "dayjs": "^1.11.13"
   }
 }
