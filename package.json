@@ -1,5 +1,5 @@
 {
-  "name": "medplum-hello-world",
+  "name": "@Mara2020/medplum-hello-world-testing",
   "version": "4.1.4",
   "private": true,
   "type": "module",
@@ -21,6 +21,13 @@
   },
   "release": {
     "branches": ["main"]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mara2020/medplum-hello-world-testing.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@mantine/core": "7.17.4",
