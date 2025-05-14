@@ -66,10 +66,31 @@ jobs:
             @semantic-release/git
             @semantic-release/changelog
 
-      - name: Publish to GitHub Packages
+      - name: Check if package version exists
         if: steps.semantic.outputs.new_release_published == 'true'
+        id: version_check
+        run: |
+          VERSION="${{ steps.semantic.outputs.new_release_version }}"
+          echo "Checking if version $VERSION already exists..."
+          if npm view "@mara2020/medplum-hello-world-testing@$VERSION" version &>/dev/null; then
+            echo "Version $VERSION already exists in the registry"
+            echo "version_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "Version $VERSION does not exist in the registry"
+            echo "version_exists=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Publish to GitHub Packages
+        if: steps.semantic.outputs.new_release_published == 'true' && steps.version_check.outputs.version_exists == 'false'
         run: |
           echo "Publishing version: ${{ steps.semantic.outputs.new_release_version }}"
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+          
+      - name: Skip publishing (version already exists)
+        if: steps.semantic.outputs.new_release_published == 'true' && steps.version_check.outputs.version_exists == 'true'
+        run: |
+          echo "Skipping publish: version ${{ steps.semantic.outputs.new_release_version }} already exists in the registry"
