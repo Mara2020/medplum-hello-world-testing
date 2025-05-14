@@ -40,17 +40,8 @@ jobs:
         run: npm run build:lib
         continue-on-error: false
       
-      - name: Configure npm authentication
-        run: |
-          echo "@Mara2020:registry=https://npm.pkg.github.com" > .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> .npmrc
-
-      - name: Publish to GitHub Packages
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
-      
       - name: Semantic Release
+        id: semantic
         uses: cycjimmy/semantic-release-action@v4
         with:
           semantic_version: 22.0.5
@@ -59,3 +50,20 @@ jobs:
               'main',
               'master'
             ]
+          extra_plugins: |
+            @semantic-release/git
+            @semantic-release/changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Configure npm authentication
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: |
+          echo "@Mara2020:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> .npmrc
+
+      - name: Publish to GitHub Packages
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}

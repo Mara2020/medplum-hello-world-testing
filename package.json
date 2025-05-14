@@ -1,6 +1,6 @@
 {
   "name": "@Mara2020/medplum-hello-world-testing",
-  "version": "4.1.4",
+  "version": "4.2.0", // The version will be automatically updated by semantic-release
   "type": "module",
   "main": "./dist/medplum-components.umd.js",
   "module": "./dist/medplum-components.es.js",
