@@ -25,7 +25,6 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
-
       
       - name: Fetch all tags
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
@@ -43,6 +42,12 @@ jobs:
           cache: 'npm'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@Mara2020'
+      
+      - name: Configure npm authentication
+        run: |
+          echo "@Mara2020:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> .npmrc
+          cat .npmrc
       
       - name: Install dependencies
         run: npm ci
@@ -64,12 +69,6 @@ jobs:
           extra_plugins: |
             @semantic-release/git
             @semantic-release/changelog
-
-      - name: Configure npm authentication
-        if: steps.semantic.outputs.new_release_published == 'true'
-        run: |
-          echo "@Mara2020:registry=https://npm.pkg.github.com" > .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> .npmrc
 
       - name: Publish to GitHub Packages
         if: steps.semantic.outputs.new_release_published == 'true'
