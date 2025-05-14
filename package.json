@@ -52,7 +52,6 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/",
-    "access": "restricted"
   },
   "devDependencies": {
     "@mantine/core": "7.17.4",
