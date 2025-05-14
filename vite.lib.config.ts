@@ -20,8 +20,8 @@ export default defineConfig({
         '@medplum/core', 
         '@medplum/react',
         '@mantine/core',
-        'react-router',
-        'react-router-dom'  // Add this line to fix the build error
+        'react-router-dom', // Add this line to fix the build error
+        'react-router'      // Also add this since it's likely used as well
       ],
       output: {
         // Provide global variables to use in the UMD build
@@ -31,8 +31,8 @@ export default defineConfig({
           '@medplum/core': 'MedplumCore',
           '@medplum/react': 'MedplumReact',
           '@mantine/core': 'Mantine',
-          'react-router': 'ReactRouter',
-          'react-router-dom': 'ReactRouterDOM'  // Add this line
+          'react-router-dom': 'ReactRouterDOM', // Add this line
+          'react-router': 'ReactRouter'        // Add this line
         }
       }
     }
