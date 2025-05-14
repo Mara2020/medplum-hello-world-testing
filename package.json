@@ -20,7 +20,7 @@
   "types": "dist/components/index.d.ts",
   "scripts": {
     "build": "tsc && vite build",
-    "build:lib": "vite build --config vite.lib.config.ts && tsc --emitDeclarationOnly --outDir dist",
+    "build:lib": "vite build --config vite.lib.config.ts && tsc --project tsconfig.lib.json",
     "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
