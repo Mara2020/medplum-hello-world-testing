@@ -25,7 +25,7 @@ export function App(): JSX.Element | null {
       logo={<Logo size={24} />}
       menus={[
         {
-          title: 'My Links TEST',
+          title: 'My Links',
           links: [
             { icon: <IconUser />, label: 'Patients', href: '/' },
             { icon: <IconCalendarEvent />, label: 'Appointments', href: '/appointments' },
