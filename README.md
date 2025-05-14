@@ -44,3 +44,52 @@ Medplum supports self-hosting, and provides a [hosted service](https://app.medpl
 - Read our [documentation](https://www.medplum.com/docs)
 - Browse our [react component library](https://storybook.medplum.com/)
 - Join our [Discord](https://discord.gg/medplum)
+
+# Medplum Hello World Testing
+
+A collection of reusable components for Medplum applications.
+
+## Usage with jsDelivr
+
+You can include this library directly in your HTML using jsDelivr:
+
+```html
+<!-- UMD build (for direct browser usage) -->
+<script src="https://cdn.jsdelivr.net/gh/Mara2020/medplum-hello-world-testing@latest/dist/medplum-components.umd.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Mara2020/medplum-hello-world-testing@latest/dist/style.css">
+
+<!-- Or use a specific version -->
+<script src="https://cdn.jsdelivr.net/gh/Mara2020/medplum-hello-world-testing@1.1.0/dist/medplum-components.umd.js"></script>
+```
+
+### Dependencies
+
+When using the UMD build, make sure to include the following dependencies:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<!-- Add other required dependencies -->
+```
+
+## Usage with npm
+
+```bash
+npm install @Mara2020/medplum-hello-world-testing
+```
+
+```javascript
+// ESM
+import { PatientHistory, PatientOverview } from '@Mara2020/medplum-hello-world-testing';
+import '@Mara2020/medplum-hello-world-testing/dist/style.css';
+
+// CommonJS
+const { PatientHistory } = require('@Mara2020/medplum-hello-world-testing');
+```
+
+## Available Components
+
+- PatientHistory
+- PatientOverview
+- ThemeToggle
+- Timeline
