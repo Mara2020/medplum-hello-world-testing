@@ -38,6 +38,7 @@ jobs:
       
       - name: Build library
         run: npm run build:lib
+        continue-on-error: false  # This ensures the workflow fails if the build fails
 
       - name: Publish to GitHub Packages
         run: npm publish

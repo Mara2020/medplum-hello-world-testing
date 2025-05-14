@@ -14,7 +14,15 @@ export default defineConfig({
     },
     rollupOptions: {
       // Make sure to externalize deps that shouldn't be bundled
-      external: ['react', 'react-dom', '@medplum/core', '@medplum/react', '@mantine/core'],
+      external: [
+        'react', 
+        'react-dom', 
+        '@medplum/core', 
+        '@medplum/react',
+        '@mantine/core',
+        'react-router',
+        'react-router-dom'  // Add this line to fix the build error
+      ],
       output: {
         // Provide global variables to use in the UMD build
         globals: {
@@ -22,7 +30,9 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
           '@medplum/core': 'MedplumCore',
           '@medplum/react': 'MedplumReact',
-          '@mantine/core': 'Mantine'
+          '@mantine/core': 'Mantine',
+          'react-router': 'ReactRouter',
+          'react-router-dom': 'ReactRouterDOM'  // Add this line
         }
       }
     }
