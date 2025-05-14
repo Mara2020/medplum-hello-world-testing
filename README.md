@@ -6,6 +6,8 @@
   </a>
 </p>
 
+Small test change
+
 This example app demonstrates the following:
 
 - Creating a new React app with Vite and TypeScript
