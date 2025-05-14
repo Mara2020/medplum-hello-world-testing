@@ -25,6 +25,16 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
+
+      
+      - name: Fetch all tags
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      
+      - name: Delete existing v1.1.0 tag if it exists
+        run: |
+          git tag -d v1.1.0 || true
+          git push --delete origin v1.1.0 || true
+        continue-on-error: true
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
