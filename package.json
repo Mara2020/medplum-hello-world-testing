@@ -51,7 +51,7 @@
     "url": "git+https://github.com/Mara2020/medplum-hello-world-testing.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@mantine/core": "7.17.4",
