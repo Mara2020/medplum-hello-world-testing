@@ -1,7 +1,6 @@
 {
   "name": "@Mara2020/medplum-hello-world-testing",
   "version": "4.1.4",
-  "private": true,
   "type": "module",
   "main": "./dist/medplum-components.umd.js",
   "module": "./dist/medplum-components.es.js",
