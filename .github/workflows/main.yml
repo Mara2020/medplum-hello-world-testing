@@ -38,7 +38,12 @@ jobs:
       
       - name: Build library
         run: npm run build:lib
-        continue-on-error: false  # This ensures the workflow fails if the build fails
+        continue-on-error: false
+      
+      - name: Configure npm authentication
+        run: |
+          echo "@Mara2020:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> .npmrc
 
       - name: Publish to GitHub Packages
         run: npm publish

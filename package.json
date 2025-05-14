@@ -22,7 +22,8 @@
     "build:lib": "vite build --config vite.lib.config.ts && tsc --project tsconfig.lib.json",
     "dev": "vite",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pkg:fix": "npm pkg fix"
   },
   "prettier": {
     "printWidth": 120,
@@ -35,11 +36,13 @@
     ]
   },
   "release": {
-    "branches": ["main"]
+    "branches": [
+      "main"
+    ]
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Mara2020/medplum-hello-world-testing.git"
+    "url": "git+https://github.com/Mara2020/medplum-hello-world-testing.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/",
