@@ -8,8 +8,9 @@
       "@semantic-release/github",
       {
         "assets": [
-          { "path": "dist/asset.min.css", "label": "CSS distribution" },
-          { "path": "dist/asset.min.js", "label": "JS distribution" }
+          { "path": "dist/medplum-components.umd.js", "label": "UMD distribution" },
+          { "path": "dist/medplum-components.es.js", "label": "ES Module distribution" },
+          { "path": "dist/style.css", "label": "CSS distribution" }
         ]
       }
     ]

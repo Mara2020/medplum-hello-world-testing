@@ -3,8 +3,24 @@
   "version": "4.1.4",
   "private": true,
   "type": "module",
+  "main": "./dist/medplum-components.umd.js",
+  "module": "./dist/medplum-components.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/medplum-components.es.js",
+      "require": "./dist/medplum-components.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "jsdelivr": "dist/medplum-components.umd.js",
+  "unpkg": "dist/medplum-components.umd.js",
+  "types": "dist/components/index.d.ts",
   "scripts": {
     "build": "tsc && vite build",
+    "build:lib": "vite build --config vite.lib.config.ts && tsc --emitDeclarationOnly --outDir dist",
     "dev": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -27,7 +43,8 @@
     "url": "https://github.com/Mara2020/medplum-hello-world-testing.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/",
+    "access": "restricted"
   },
   "devDependencies": {
     "@mantine/core": "7.17.4",
