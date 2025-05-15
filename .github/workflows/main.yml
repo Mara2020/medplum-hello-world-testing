@@ -28,9 +28,7 @@ jobs:
       
       - name: Fetch all tags
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      
-      # Removing the hardcoded tag deletion step as semantic-release will handle versioning
-      
+            
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
