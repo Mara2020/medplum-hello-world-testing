@@ -5,6 +5,16 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
     [
+        "@bobvanderlinden/semantic-release-pull-request-analyzer",
+        {
+            "labels": {
+            "enhancement": "minor",
+            "documentation": "patch",
+            "bug": "patch"
+            }
+        }
+    ],
+    [
       "@semantic-release/github",
       {
         "assets": [
