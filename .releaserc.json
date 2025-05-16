@@ -1,5 +1,5 @@
 {
-  "branches": ["main", "master"],
+  "branches": ["stable"],
   "plugins": [
     "@semantic-release/npm",
     [
