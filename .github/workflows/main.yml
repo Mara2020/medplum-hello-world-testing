@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - release
+      - stable
 
 jobs:
   release:
@@ -48,6 +48,35 @@ jobs:
       - name: Build library
         run: npm run build:lib
         continue-on-error: false
+      
+      - name: Check for existing tag
+        run: |
+          # Get latest version from package.json
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version in package.json: $CURRENT_VERSION"
+          
+          # Check if tag already exists and delete if needed
+          if git rev-parse "v$CURRENT_VERSION" >/dev/null 2>&1; then
+            echo "Tag v$CURRENT_VERSION already exists, deleting it"
+            git tag -d "v$CURRENT_VERSION"
+            git push --delete origin "v$CURRENT_VERSION" || true
+          fi
+          
+          # Also check if next possible version tags exist (to handle the case where package.json hasn't been updated yet)
+          MAJOR=$(echo $CURRENT_VERSION | cut -d. -f1)
+          MINOR=$(echo $CURRENT_VERSION | cut -d. -f2)
+          PATCH=$(echo $CURRENT_VERSION | cut -d. -f3)
+          
+          NEXT_PATCH="v$MAJOR.$MINOR.$(($PATCH + 1))"
+          NEXT_MINOR="v$MAJOR.$(($MINOR + 1)).0"
+          
+          for TAG in "$NEXT_PATCH" "$NEXT_MINOR"; do
+            if git rev-parse "$TAG" >/dev/null 2>&1; then
+              echo "Tag $TAG already exists, deleting it"
+              git tag -d "$TAG"
+              git push --delete origin "$TAG" || true
+            fi
+          done
       
       - name: Semantic Release
         id: semantic
