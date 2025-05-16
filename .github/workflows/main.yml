@@ -85,7 +85,7 @@ jobs:
           semantic_version: 22.0.5
           branches: |
             [
-              'release'
+              'stable'
             ]
           extra_plugins: |
             @semantic-release/git
