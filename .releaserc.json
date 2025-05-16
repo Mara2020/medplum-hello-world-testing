@@ -6,9 +6,9 @@
         "@bobvanderlinden/semantic-release-pull-request-analyzer",
         {
             "labels": {
-            "enhancement": "minor",
-            "documentation": "patch",
-            "bug": "patch"
+                "enhancement": "minor",
+                "documentation": "patch",
+                "bug": "patch"
             }
         }
     ],
