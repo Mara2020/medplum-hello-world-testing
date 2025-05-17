@@ -39,7 +39,16 @@
       "stable"
     ],
     "plugins": [
-      "@bobvanderlinden/semantic-release-pull-request-analyzer",
+      [
+        "@bobvanderlinden/semantic-release-pull-request-analyzer",
+        {
+            "labels": {
+                "enhancement": "minor",
+                "documentation": "patch",
+                "bug": "patch"
+            }
+        }
+      ],
       "@semantic-release/npm",
       "@semantic-release/github"
     ]
