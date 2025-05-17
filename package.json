@@ -42,10 +42,12 @@
       [
         "@bobvanderlinden/semantic-release-pull-request-analyzer",
         {
+            "debug": true,
             "labels": {
                 "enhancement": "minor",
                 "documentation": "patch",
-                "bug": "patch"
+                "bug": "patch",
+                "fix": "patch"
             }
         }
       ],
