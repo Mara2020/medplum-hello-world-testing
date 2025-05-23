@@ -21,7 +21,7 @@ export function HomePage(): JSX.Element {
   return (
     <Document>
       <Title>
-        Welcome <ResourceName value={profile} link />
+        NO WELCOME <ResourceName value={profile} link />
         <ThemeToggle />
       </Title>
       <SearchControl
